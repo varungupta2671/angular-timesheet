@@ -1,4 +1,4 @@
-var app = angular.module('weekCalendar', ['ui.bootstrap']);
+var app = angular.module('weekCalendar', []);
 
 app.controller('MainCtrl', function ($scope) {
   var currentSelected;
@@ -45,6 +45,7 @@ app.controller('MainCtrl', function ($scope) {
   /* Method to get weekday data*/
   $scope.getWeekDays = function (current) {
     var week = new Array();
+    current.setHours(0,0,0);
     current.setDate((current.getDate() - current.getDay()));
     for (var i = 0; i < 7; i++) {
       week.push(

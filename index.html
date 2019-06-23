@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <title>AngularJS Week Calendar</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body ng-controller="MainCtrl" data-ng-init="init()">
-  <accordion close-others="true">
+  <!-- <accordion close-others="true">
     <accordion-group ng-repeat="user in users" is-open="isopen">
 
       <accordion-heading>
@@ -56,16 +56,69 @@
         </div>
       </div>
     </accordion-group>
-  </accordion>
+  </accordion> -->
+
+  <div class="accordion" id="accordionExample">
+    <div class="card" ng-repeat="user in users">
+      <div class="card-header" id="heading{{$index}}">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseClick{{$index}}"
+            aria-expanded="false" aria-controls="collapseClick{{$index}}">
+            {{user.number}} - {{user.Sys_id}}
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapseClick{{$index}}" class="collapse" aria-labelledby="heading{{$index}}"
+        data-parent="#accordionExample">
+        <div class="card-body">
+          <!-- Calendar Widget -->
+          <div class="form-group">
+            <table>
+              <tr>
+                <th colspan="2">
+                  <div class="text-center">
+                    <span class="btn btn-default btn-next-prev" ng-click="prev()">
+                      &#10094;
+                    </span>
+                    <span>
+                      {{firstDate | date:'MMM d'}} - {{lastDate | date:'MMM d'}}
+                    </span>
+
+                    <span class="btn btn-default btn-next-prev" ng-click="next()">
+                      &#10095;
+                    </span>
+                  </div>
+                </th>
+
+              </tr>
+              <tr ng-repeat="b in dot">
+                <td>
+                  {{b.date | date:'EEEE, MMMM d, y'}}
+                </td>
+                <td>
+                  <input type="text" name="hours{{$parent.$index}}{{$index}}" class="form-control"
+                    ng-model="weekdays[user.number][b.day]" ng-value="user.ID">
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- Submit Calendar Data -->
+          <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-default" onclick=alert(message) />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="btn btn-default" disabled>{{weekdays}}</div>
 
   <!-- /.content -->
   <script src="http://code.jquery.com/jquery.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <script src="https://code.angularjs.org/1.7.8/angular.js"></script>
-  <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
   <script src="app.js"></script>
 </body>
 
