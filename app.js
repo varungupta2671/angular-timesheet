@@ -80,7 +80,7 @@ app.controller('MainCtrl', function ($scope) {
 
   /* Method to create prefilled data object*/
   var setModelData = function () {
-    $scope.weekdays = { "INC1932310": { "201905023": "sadfdfdsf" } };
+    $scope.weekdays = {"INC1932310":{"201905023":"sadfdfdsf"},"TSK1956312":{"201905024":"dsfadfdf"}};
     console.log("DOT", $scope.dot);
     console.log("USERS", $scope.users);
     console.log("WEEKDAYS", $scope.weekdays);
