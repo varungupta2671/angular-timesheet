@@ -63,7 +63,7 @@
       <div class="card-header" id="heading{{$index}}">
         <h5 class="mb-0">
           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseClick{{$index}}"
-            aria-expanded="false" aria-controls="collapseClick{{$index}}">
+            aria-expanded="false" aria-controls="collapseClick{{$index}}" ng-click="clickFunc(user.number)">
             {{user.number}} - {{user.Sys_id}}
           </button>
         </h5>
@@ -78,14 +78,14 @@
               <tr>
                 <th colspan="2">
                   <div class="text-center">
-                    <span class="btn btn-default btn-next-prev" ng-click="prev()">
+                    <span class="btn btn-default btn-next-prev" ng-click="prev(firstDate)">
                       &#10094;
                     </span>
                     <span>
                       {{firstDate | date:'MMM d'}} - {{lastDate | date:'MMM d'}}
                     </span>
 
-                    <span class="btn btn-default btn-next-prev" ng-click="next()">
+                    <span class="btn btn-default btn-next-prev" ng-click="next(firstDate)">
                       &#10095;
                     </span>
                   </div>

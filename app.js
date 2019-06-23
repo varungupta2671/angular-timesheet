@@ -1,7 +1,6 @@
 var app = angular.module('weekCalendar', []);
 
 app.controller('MainCtrl', function ($scope) {
-  var currentSelected;
   $scope.dot = new Array();
   $scope.users = new Array();
   $scope.weekdays = {};
@@ -33,27 +32,29 @@ app.controller('MainCtrl', function ($scope) {
   ];
 
   /* Method to call getPrevious fucntion*/
-  $scope.prev = function () {
-    $scope.getPrevious(currentSelected);
+  $scope.prev = function (currtWeek) {
+    $scope.getPrevious(currtWeek);
   };
 
   /* Method to call getNext fucntion*/
-  $scope.next = function () {
-    $scope.getNext(currentSelected);
+  $scope.next = function (currtWeek) {
+    $scope.getNext(currtWeek);
   };
 
   /* Method to get weekday data*/
   $scope.getWeekDays = function (current) {
     var week = new Array();
-    current.setHours(0,0,0);
+    current.setHours(0, 0, 0);
     current.setDate((current.getDate() - current.getDay()));
     for (var i = 0; i < 7; i++) {
+      var currentDate = current.getFullYear() + "" +
+        (current.getMonth().length === 2 ? current.getMonth() : 0 + "" + current.getMonth()) + "" +
+        (current.getDate().length === 2 ? current.getDate() : 0 + "" + current.getDate());
       week.push(
-        { "date": new Date(current), "day": Math.max(current) }
+        { "date": new Date(current), "day": currentDate }
       );
       current.setDate(current.getDate() + 1);
     }
-    currentSelected = week[0].date;
     $scope.firstDate = week[0].date;
     $scope.lastDate = week[6].date;
     return week;
@@ -79,10 +80,10 @@ app.controller('MainCtrl', function ($scope) {
 
   /* Method to create prefilled data object*/
   var setModelData = function () {
-    $scope.weekdays = { "INC1932310": { "23": '32452345' } };
-    // console.log("DOT", $scope.dot);
-    // console.log("USERS", $scope.users);
-    // console.log("WEEKDAYS", $scope.weekdays);
+    $scope.weekdays = { "INC1932310": { "201905023": "sadfdfdsf" } };
+    console.log("DOT", $scope.dot);
+    console.log("USERS", $scope.users);
+    console.log("WEEKDAYS", $scope.weekdays);
   };
 
   /* Method to set initial data */
@@ -90,5 +91,10 @@ app.controller('MainCtrl', function ($scope) {
     $scope.getCurrent();
     $scope.users = users;
     setModelData();
-  }
+  };
+
+  $scope.clickFunc = function (user) {
+    // $scope.weekdays = {};
+    console.log(user + " timesheet opened..");
+  };
 });
