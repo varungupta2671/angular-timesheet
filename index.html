@@ -9,55 +9,6 @@
 </head>
 
 <body ng-controller="MainCtrl" data-ng-init="init()">
-  <!-- <accordion close-others="true">
-    <accordion-group ng-repeat="user in users" is-open="isopen">
-
-      <accordion-heading>
-        {{user.number}} - {{user.Sys_id}} <i class="pull-right glyphicon"
-          ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
-      </accordion-heading>
-
-      <div class="row form-group">
-        <div class="col-sm-12 clearfix">
-          <table>
-            <tr>
-              <th colspan="2">
-                <div class="text-center">
-                  <span class="btn btn-default btn-next-prev" ng-click="prev()">
-                    &#10094;
-                  </span>
-                  <span>
-                    {{firstDate | date:'MMM d'}} - {{lastDate | date:'MMM d'}}
-                  </span>
-
-                  <span class="btn btn-default btn-next-prev" ng-click="next()">
-                    &#10095;
-                  </span>
-                </div>
-              </th>
-
-            </tr>
-            <tr ng-repeat="b in dot">
-              <td>
-                {{b.date | date:'EEEE, MMMM d, y'}}
-              </td>
-              <td>
-                <input type="text" name="hours{{$parent.$index}}{{$index}}" class="form-control"
-                  ng-model="weekdays[user.number][b.day]" ng-value="user.ID">
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <input type="submit" value="Submit" class="btn btn-default" onclick=alert(message) />
-        </div>
-      </div>
-    </accordion-group>
-  </accordion> -->
-
   <div class="accordion" id="accordionExample">
     <div class="card" ng-repeat="user in users">
       <div class="card-header" id="heading{{$index}}">
